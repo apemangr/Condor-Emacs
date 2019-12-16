@@ -21,7 +21,8 @@
   <img src="https://img.shields.io/github/issues/apemangr/Condor-Emacs" alt="Issues" title="" />  
   <img src="https://img.shields.io/github/stars/apemangr/Condor-Emacs" alt="Stars" title="" /> 
   <img src="https://img.shields.io/github/downloads/apemangr/Condor-Emacs/v1.0-beta/total" alt="Downloads" title="" /> 
-
+  <img src="  https://img.shields.io/github/last-commit/apemangr/condor-emacs
+" alt="Last commit" title="" /> 
 </p>
 
 

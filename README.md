@@ -38,6 +38,7 @@
         - [macOS](#macos)
         - [Windows](#windows)
 - [Installation](#installation)
+- [Programming language support](#programming language support)
 
 # Features
 

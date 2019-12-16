@@ -189,7 +189,7 @@ git fetch
 git reset --hard <tag version which you are updating to>
 ```
 ## Packages
-In the main buffer called *Dashboard* you can press the "Update Packages" to automatically updates all the packages.
+In the main buffer called *Dashboard* you can press the **"Update Packages"** to automatically updates all the packages.
 
 <p align="center">
   <img src="images/DashboardUpdate.png" alt="Dashboard Update" title="" />

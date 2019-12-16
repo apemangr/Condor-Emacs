@@ -16,6 +16,15 @@
   <a href="https://github.com/apemangr/Condor-Emacs/wiki/"><b>Wiki</b></a> 
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/github/license/apemangr/Condor-Emacs" alt="License" title="" />
+  <img src="https://img.shields.io/github/issues/apemangr/Condor-Emacs" alt="Issues" title="" />  
+  <img src="https://img.shields.io/github/stars/apemangr/Condor-Emacs" alt="Stars" title="" /> 
+  <img src="https://img.shields.io/github/downloads/apemangr/Condor-Emacs/v1.0-beta/total" alt="Downloads" title="" /> 
+
+</p>
+
+
 # Table of Contents
 
 -[Introduction](#introduction)

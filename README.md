@@ -16,7 +16,7 @@
   <a href="https://github.com/apemangr/Condor-Emacs/wiki/"><b>Wiki</b></a> 
 </p>
 
-***
+
 
 
 
@@ -31,7 +31,7 @@
 
 -[Screenshots](#screenshots)
 
-***
+
 
 # Features
 
@@ -51,7 +51,7 @@
 
 - **Hovers**
 
-***
+
 
 # Screenshots
 

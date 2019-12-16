@@ -1,0 +1,3 @@
+gcc -x c  -o /home/apeman/qr_BvEM4D.out qr_BvEM4D.c && /home/apeman/qr_BvEM4D.out 
+gcc -x c  -o /home/apeman/qr_lELBlz.out qr_lELBlz.c && /home/apeman/qr_lELBlz.out 
+gcc -x c  -o /home/apeman/qr_UUlVxL.out qr_UUlVxL.c && /home/apeman/qr_UUlVxL.out 

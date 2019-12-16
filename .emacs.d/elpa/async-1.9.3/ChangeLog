@@ -1,0 +1,1414 @@
+2019-10-08  Stefan Monnier  <monnier@iro.umontreal.ca>
+
+	Get async-pkg.el out of the way
+
+2019-10-08  Stefan Monnier  <monnier@iro.umontreal.ca>
+
+	* async-bytecomp.el (async-bytecomp--get-package-deps): Fix last change
+
+2019-10-08  Stefan Monnier  <monnier@iro.umontreal.ca>
+
+	Use cl-lib an nadvice (re-apply 783af291680d)
+
+	* async-bytecomp.el: (async--package-compile): New function, extracted
+	from the old defadvice.
+	(package-compile): Remove defadvice.
+	(async-bytecomp-package-mode): Advise/Unadvise package--compile.
+
+	* packages/async/async-test.el: Don't needlessly require `cl`. Use
+	lexical-binding.
+
+	* packages/async/async.el: Require cl-lib and nadvice.
+	(async--receive-sexp): Consistently use lexical-binding.
+
+	* dired-async.el: Remove redundant `:group`s.
+	(wdired-do-renames, dired-create-files): Remove defadvice.
+	(dired-async-mode): `advice-add/remove` is always available.
+
+2019-10-07  Stefan Monnier  <monnier@iro.umontreal.ca>
+
+	Change deps management in async-bytecomp.el
+
+	* async-bytecomp.el:
+	(async-bytecomp-allowed-packages): Change special value to `all`.
+	(async-bytecomp--get-package-deps): Rewrite following rewrite of 
+	package--get-deps to avoid inf-loops with circular dependencies.
+	(async-bytecomp-get-allowed-pkgs): Remove.
+	(async--package-compile): Adjust accordingly.
+
+2019-05-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Handle dotted lists as well
+
+	This is limited though to dotted lists like (x . y) and not (x . (x .
+	y)).
+
+	* async.el (async--purecopy): Do it.
+
+2019-05-02  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Use consp instead of listp
+
+	* async.el (async--purecopy): Do it.
+
+2019-05-02  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2019-05-02  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove props recursively when injecting vars with NOPROPS
+
+	* async.el (async-variables-noprops-function): Update to new name.
+	(async--purecopy): Renamed from async-variables-noprops, now recursive.
+
+2018-12-23  Hinckley, Troy J  <troy.j.hinckley@intel.com>
+
+	Only revert dired buffers if not remote
+
+	Make sure that a file is not remote before we revert it, because 
+	otherwise we could introduce unnecessary delay.
+
+2018-12-20  Hinckley, Troy J  <troy.j.hinckley@intel.com>
+
+	Fix error from reverting to nonexistent directories
+
+2018-06-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add more info about emacs bug when using async
+
+2018-06-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update README
+
+2018-05-27  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Don't quote numbers as well
+
+	* async.el (async-inject-variables): Do it.
+
+2018-05-27  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	DRY in async-inject-variables
+
+	* async.el (async-inject-variables): Do it.
+
+2018-05-27  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix two issues in async-inject-variables
+
+	1) Avoid insertion of syntax-tables when EXCLUDE-REGEXP argument is 
+	specified. 2) Don't quote strings, nil, t and vectors.
+
+	* async.el (async-inject-variables): Do it.
+
+2018-05-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Copy source files when installing
+
+	* Makefile (install): Do it.
+
+2018-05-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Check if dired buffer is alive before reverting (#99)
+
+	* dired-async.el (dired-async-after-file-create): Do it.
+
+2018-05-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update dired-buffers when operation ends (#99)
+
+	* dired-async.el (dired-async-after-file-create): Do it.
+
+2018-04-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add async-byte-compile-file
+
+	* async-bytecomp.el (async-byte-compile-file): New.
+
+2018-04-24  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Bump to 1.9.3
+
+2018-04-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Require cl-lib.
+
+2018-04-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2018-04-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow removing text properties in strings when injecting
+
+	variables.
+
+	* async.el (async-variables-noprops-function): New user var.
+	(async-variables-noprops): Default fn for
+	`async-variables-noprops-function`.
+	(async-inject-variables): Use it, takes one more optional arg `noprops`.
+
+2018-02-26  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove autoload file as well when uninstalling
+
+	* Makefile (uninstall): Do it.
+
+2018-01-19  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Use user-emacs-directory (#95)
+
+	* async-bytecomp.el (async-byte-compile-log-file): Don't hardcode
+	".emacs.d/".
+
+2018-01-03  Andrew Stahlman  <astahlman@lyft.com>
+
+	Choose coding system based on environment
+
+	Before this change, the coding system was hardcoded to `utf-8-unix`. 
+	This change sets the coding system to `utf-8-auto`, which can handle 
+	Windows-style newlines (i.e., `\r\n`).
+
+	Example:
+
+	    #+BEGIN_SRC emacs-lisp :results output
+	     (defun test-decoding (coding-system)
+	       (let ((sexp (decode-coding-string (base64-decode-string
+						  (base64-encode-string "line
+	   1\r\nline 2")) coding-system))
+		     (coding-system-for-write coding-system))
+		 (print (format "With coding system `%s`: {{{%s}}}"
+	coding-system
+	   (pp-to-string sexp)))))
+
+	      (test-decoding 'utf-8-unix) ;; treats \r as a separate newline
+	     (test-decoding 'utf-8-dos)	 ;; treats \r\n as a single newline
+	     (test-decoding 'utf-8-auto) ;; treats \r\n as a single newline
+	   #+END_SRC
+
+	    #+RESULTS:
+	   :
+	   : "With coding system `utf-8-unix`: {{{\"line 1
+	   \\nline 2\"}}}"
+	   :
+	   : "With coding system `utf-8-dos`: {{{\"line 1\\nline 2\"}}}"
+	   :
+	   : "With coding system `utf-8-auto`: {{{\"line 1\\nline 2\"}}}"
+
+	See https://github.com/jwiegley/emacs-async/issues/93 for more context.
+
+2017-12-27  Andrea Richiardi  <a.richiardi.work@gmail.com>
+
+	Add .gitignore
+
+	It will avoid tracking compilation files like *.elc and autoloads.
+
+2017-10-16  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix compilation warning
+
+	* dired-async.el (dired-async-create-files): Ignore unused `from` in
+	cl-loop.
+
+2017-10-15  Allen Li  <darkfeline@felesatra.moe>
+
+	Add one-shot dired-async commands
+
+2017-09-17  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow backing up in same directory
+
+	like "cp -f --backup=numbered foo bar".
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2017-08-24  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Copy the autoload file when installing
+
+	* Makefile (install): Do it.
+
+2017-08-23  Allen Li  <darkfeline@felesatra.moe>
+
+	Add mode line lighter for dired-async-mode
+
+2017-08-05  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Use only -q flag when needed
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2017-08-04  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add new var to allow calling emacs with -Q or -q (#80).
+
+	* async.el (async-quiet-switch): Do it.
+	(async-start):			 Do it.
+
+2017-08-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Use emacs -q flag to fix issue #80 with emacs-26
+
+	* async.el (async-start): Do it.
+
+2017-06-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Ensure wdired-use-interactive-rename is disabled.
+
+	* dired-async.el (dired-async-wdired-do-renames): New advice.
+	(wdired-do-renames): Same.
+	(dired-async-mode): Add new advice.
+
+2017-05-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update README.
+
+2017-05-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2017-05-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update version number.
+
+2017-05-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add makefile.
+
+2017-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update README.md
+
+	Add code block on new line.
+
+2017-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update README.
+
+2017-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Inject nsm-* vars in smtp-mail for emacs-25+ (#75).
+
+	* smtpmail-async.el (async-smtpmail-send-it): Do it.
+
+2017-02-19  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Using sleep-for instead of sit-for in async-wait prevent infloop (#71).
+
+	* async.el (async-wait): Do it.
+
+2017-02-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Revert renaming of async-wait to async--wait (#71).
+
+	* async.el (async-wait): Do it.
+	(async-get):		 Do it.
+	(async-start):		 Do it.
+
+2017-02-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix and clarify async-ready, async-get and async-wait (#71).
+
+	* async.el (async-ready): Ensure proc buffer is alive and return t if
+	buffer is not alive. Fix docstring.
+	(async--wait): Renamed from async-wait.
+	(async-get): Ensure proc buffer is alive. Fix docstring.
+	(async-start): Docstring only.
+
+2016-11-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Improve formatting in README.
+
+2016-11-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add some documentation in README for async-let.
+
+2016-11-02  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow non list bindings in async-let.
+
+	* async.el (async--fold-left): Also make arguments name more meaningful.
+
+2016-11-02  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow passing multiple forms to async-let
+
+	without wrapping forms in a progn.
+
+	* async.el (async-let): Do it.
+
+2016-11-02  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow passing any value to async-let bindings.
+
+	* async.el (async-let): Do it, also allow indenting properly.
+
+2016-10-31  John Wiegley  <johnw@newartisans.com>
+
+	Add some string escapes
+
+2016-10-31  John Wiegley  <johnw@newartisans.com>
+
+	Add `async-let' macro
+
+2016-10-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Don't query in set-visited-file-name.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-07-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix home url in *pkg.el.
+
+2016-05-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update version number here too.
+
+2016-05-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update pkg file.
+
+2016-05-05  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add more info in mode-line on failures.
+
+	* dired-async.el (dired-async-after-file-create): Mention dired log
+	buffer.
+	(dired-async-create-files):			  Mention dired log
+	buffer.
+
+2016-05-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Handle errors file by file instead of returning on first error.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix success message on callback.
+
+	* dired-async.el (dired-async-after-file-create): Remove one "file(s)"
+	which seems redundant and use dired-plural-s.
+
+2016-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Improve how error buffer is displayed.
+
+	* dired-async.el (dired-async-after-file-create): Do it.
+
+2016-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Better handling of errors happening on child.
+
+	* dired-async.el (dired-async-create-files): Use dired-log and print its 
+	output to dired-async-log-file.
+
+2016-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	When failures have been printed to dired log add the date at bob.
+
+	* dired-async.el (dired-async-create-files): Use dired-log with t.
+
+2016-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove unused commented code.
+
+2016-05-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Ensure a new line is added when printing to dired log buffer.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Revert last commit.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	DRY use apply.
+
+	* dired-async.el (dired-async-after-file-create): Do it.
+	(dired-async-create-files):			  Do it.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Handle error also on host when async-list of file is empty.
+
+	* dired-async.el (dired-async-create-files): Do it. When only one file
+	and user answer no handle error on host.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix operation arg of callback.
+
+	* dired-async.el (dired-async-after-file-create): Use the car.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove commented line, no code change.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix formatting the help form in dired-create-files.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Finally handle the failures correctly.
+
+	* dired-async.el (dired-async-operation): Removed no more needed.
+	(dired-async-failures): New face.
+	(dired-async-mode-line-message): Use one more arg FACE.
+	(dired-async-after-file-create): Handle failures.
+	(dired-async-create-files): Pass failures args to callback. Remove code
+	that is now never called since when the mode is turned off and we are no
+	more async the job is delegated again to old dired function.
+
+2016-04-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Unquote all callbacks.
+
+	* async-bytecomp.el (async-byte-recompile-directory): Do it.
+	* dired-async.el (dired-async-create-files):	      Do it.
+	* smtpmail-async.el (async-smtpmail-send-it):	      Do it.
+
+2016-04-29  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix repetition in callback.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-04-27  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove unuseful code never called.
+
+	* dired-async.el (dired-async-create-files): Remove
+	dired-create-files-failures stuff that don't happen on host but child.
+
+2016-04-27  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Switch to lexical-binding.
+
+	* async-bytecomp.el: Switch to lex.
+	* async.el:	     Switch to lex.
+	(async-when-done): Fix unused arg.
+	(async-receive):   Same.
+	* dired-async.el: Switch to lex.
+	(dired-async-create-files): Remove unused stuff and fix vars for lex
+	env.
+	* smtpmail-async.el: Switch to lex.
+
+2016-04-26  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Ensure dired-async--modeline-mode is called.
+
+	* dired-async.el (dired-async-kill-process): When process is nil don't
+	call delete-process.
+
+2016-04-26  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Ensure dired-copy-preserve-time is passed to child with its current
+	value.
+
+	Using inject would load dozen of unneeded dired stuff.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-04-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add comment no code change.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-04-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix backup fn, DRY and ignore symlinks directories.
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2016-04-24  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Improve backup-files by handling symlinks and time-stamp errors.
+
+	* dired-async.el (dired-async-create-files): Rework backup-files.
+
+2016-04-23  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge pull request #62 from jwiegley/backup_files
+
+	Allow reproducing "cp --backup=numbered from to".
+
+2016-04-23  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow reproducing "cp --backup=numbered from to".
+
+	* dired-async.el (dired-async-create-files): When using a file-creator
+	named 'backup-file, files are copied to destination without overwriting
+	existing files, making a versionned copy of original files.
+
+2016-03-16  Sean Whitton  <spwhitton@spwhitton.name>
+
+	Debian and Ubuntu installation instructions
+
+	This ELPA package is now available from the Debian and Ubuntu package
+	repositories.
+
+2016-02-20  Uwe Koloska	 <kolewu9@googlemail.com>
+
+	fix a typo
+
+2016-01-09  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove autoload file added by error.
+
+2016-01-08  John Wiegley  <johnw@newartisans.com>
+
+	Fix UTF-8 encoding for strings passed to subordinate Emacs
+
+2016-01-08  John Wiegley  <johnw@newartisans.com>
+
+	Assign copyrights to the FSF, add autoloads file
+
+2016-01-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Declare package-alist in async-bytecomp..
+
+2016-01-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Parse also `package-alist` when getting dependencies (#58).
+
+	* async-bytecomp.el (async-bytecomp--get-package-deps): Try
+	`package-archive-contents` and also `package-alist` in case pkg no more
+	present in `package-archive-contents`.
+
+2015-12-29  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	No need to require find-func.
+
+	* async.el (async-start): This require was used when using 
+	find-library-name, it is now unneeded.
+
+2015-12-28  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	async-start is now a function (#43).
+
+	* async.el (async--procvar): New internal var.
+	(async-start): Use it to move async-start to a function.
+
+2015-12-28  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove old require in test file.
+
+2015-11-23  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Document async compilation of packages in README.
+
+2015-11-23  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update version in *pkg.el file.
+
+2015-11-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Don't recompute length fn-list, ensure operation is downcased for safety
+	(#57).
+
+	* dired-async.el (dired-async-create-files): Do it.
+
+2015-11-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2015-11-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Only rename buffers on rename operation (#56).
+
+2015-11-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Rename buffers after renaming (#56).
+
+2015-11-05  Syohei YOSHIDA  <syohex@gmail.com>
+
+	Correct package headers
+
+2015-11-04  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add epg to inject variables in smtpmail (#54).
+
+	* smtpmail-async.el (async-smtpmail-send-it): Do it.
+
+2015-09-10  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix pkg file and instructions in dired-async.
+
+2015-09-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add melpa badges to README.
+
+2015-09-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add to load-path and load only async.
+
+	* async-bytecomp.el (package--compile): Do it, add comments.
+
+2015-09-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add async to load-path when recompiling itself.
+
+	* async-bytecomp.el (package--compile): Do it.
+
+2015-09-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2015-09-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Don't call package-activate-1 in package--compile.
+
+	* async-bytecomp.el (package--compile): Do it.
+
+2015-08-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Check if pkg is member of package-archive-contents (#51).
+
+	* async-bytecomp.el (async-bytecomp-get-allowed-pkgs): Do it.
+
+2015-08-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update version number.
+
+2015-08-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Check if package-archive-contents is populated (#51).
+
+	* async-bytecomp.el (async-bytecomp--get-package-deps): Add comment.
+	(async-bytecomp-get-allowed-pkgs): Don't enter loop when 
+	package-archive-contents is nil.
+
+2015-08-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Change mode-line face.
+
+	* dired-async.el (dired-async-mode-message): Use a foreground face.
+
+2015-08-07  Jonas Bernoulli  <jonas@bernoul.li>
+
+	Add magit to async-bytecomp-allowed-package.
+
+	As the maintainer of Magit I opt-in to `package.el' not messing up the
+	builds of this package and its dependencies.
+
+2015-07-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Bind print-level and print-length (#48).
+
+	* async.el (async--insert-sexp): Do it.
+
+2015-07-17  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add more helm packages to compile async.
+
+	* async-bytecomp.el (async-bytecomp-allowed-packages): Do it.
+
+2015-05-29  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	No message on startup when quiet.
+
+	* async-bytecomp.el: Do it.
+
+2015-05-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-pkg.el: Update version number.
+
+2015-05-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Add autoload cookies.
+
+2015-05-15  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	New mode async-bytecomp-package-mode.
+
+	* async-bytecomp.el (async-bytecomp-package-mode): Allow enabling
+	package--compile advice with this mode.
+
+2015-05-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el: Remove now unused dired-async-be-async.
+
+2015-05-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el: Fix compatibility with emacs-24.3.
+
+2015-05-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el (dired-async-mode): Fix group name.
+
+2015-05-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* README.md: Update infos for dired-async.
+
+2015-05-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add autoload cookie and make dired-async--modeline-mode internal.
+
+	* dired-async.el (dired-async--modeline-mode): Renamed from
+	dired-async-modeline-mode to notify the function is internal.
+	(dired-async-mode): add autoload cookie.
+
+2015-05-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow enabling dired-async with a minor-mode.
+
+	* dired-async.el (dired-async-be-async): Removed.
+	(dired-async-modeline-mode): Renamed from dired-async-mode.
+	(dired-async-create-files): The function that replace
+	dired-create-files.
+	(dired-async-mode): New mode to enable dired-async.
+
+2015-04-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	async-bytecomp-allowed-packages should be a list of symbols.
+
+	* async-bytecomp.el (async-bytecomp-allowed-packages): Fix docstring.
+	(package--compile): Check if async-bytecomp-allowed-packages is a list
+	of one symbol '(all) and not a symbol 'all.
+
+2015-04-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el (package--compile): Fix typo.
+
+2015-04-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow setting async-bytecomp-get-allowed-pkgs to compile async all
+	packages.
+
+	* async-bytecomp.el (async-bytecomp-get-allowed-pkgs): Allow using 'all
+	as value.
+
+2015-04-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Don't use package--get-deps that doesn't handle non installed packages.
+
+	* async-bytecomp.el (async-bytecomp--get-package-deps): Same as
+	package--get-deps but handle non installed packages.
+
+2015-04-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Use package--get-deps to get packages dependencies.
+
+	* async-bytecomp.el (async-bytecomp-get-allowed-pkgs): Use
+	package--get-deps. Inline it if not available.
+
+2015-02-04  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Don't run the loop when async-bytecomp-allowed-packages is nil.
+
+	* async-bytecomp.el (async-bytecomp-get-allowed-pkgs): Do it.
+
+2014-12-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Fix doctring (#46).
+
+	* async-bytecomp.el (async-bytecomp-allowed-packages): Do it.
+
+2014-12-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Async compile also dependendies (#46).
+
+	* async-bytecomp.el (async-bytecomp-get-allowed-pkgs): New.
+	(package--compile): Use it.
+
+2014-12-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Allow customizing which packages compile async (#46).
+
+	* async-bytecomp.el (async-bytecomp-allowed-packages): New user var.
+	(package--compile): Use it.
+
+2014-12-25  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Unbound async-byte-recompile-directory when reinstalling async.
+
+	* async-bytecomp.el (package--compile): do it.
+
+2014-12-23  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2014-12-23  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Use always the args 0 and force for byte-recompile-directory.
+
+	* async-bytecomp.el (async-byte-recompile-directory): Remove confusing 
+	args used in byte-recompile-directory and add docstring.
+	(package--compile): Remove old args of async-byte-recompile-directory.
+
+2014-12-23  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Inject bytecomp variables (#44).
+
+	* async-bytecomp.el (async-byte-recompile-directory): Do it.
+
+2014-12-21  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Use cl-incf and don't compile test file.
+
+	* async-bytecomp.el: Use cl-incf.
+	* async-test.el: Don't compile.
+
+2014-12-18  Mike Neilsen  <mneilsen@acm.org>
+
+	Documentation tweaks; mention DEFAULT-DIRECTORY
+
+2014-11-06  Phil Hudson	 <phil.hudson@iname.com>
+
+	Marked up file and buffer names
+
+2014-11-06  Phil Hudson	 <phil.hudson@iname.com>
+
+	Marked up 'nil' throughout
+
+2014-11-06  Phil Hudson	 <phil.hudson@iname.com>
+
+	Changed symbol markup from Lisp idiom to Markdown
+
+	Changed `foo' to `foo` throughout.
+
+2014-10-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el (package--compile): load async-bytecomp. This is
+	needed when reinstalling async package.
+
+2014-09-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: emacs-24 indent.
+
+2014-09-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Be quiet when compiling for elpa.
+
+2014-09-30  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Fix callback. Now we use display-buffer, the buffer
+	is not current, so use with-current-buffer.
+
+2014-09-29  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Send errors in single buffer (#36). Don't select
+	log buffer unless using special-display.
+
+2014-09-24  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el (dired-create-file): require dired-x for newer emacs
+	versions.
+
+2014-09-21  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Add comment.
+
+2014-09-21  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-pkg.el: Don't compile.
+
+2014-09-14  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Fix comment.
+
+2014-09-14  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Use only load.
+
+2014-09-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el: Add code section no code-change.
+
+2014-09-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async.el: Fix comment.
+
+2014-09-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Add comments, no--code-change.
+
+2014-09-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el: require message to shutup byte compiler.
+
+2014-09-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: Revert previous change in package--compile.
+
+2014-09-12  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async.el: Fix recompilation of async dir.
+	* async-bytecomp.el: load async on startup.
+
+2014-09-10  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Remove version number in all files.
+	* async-bytecomp.el (async-byte-compile-log-file): Use .emacs.d as
+	 directory.
+	* async-pkg.el: Update version number.
+
+2014-09-10  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-bytecomp.el: New file.
+
+2014-09-09  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* README.md: Fix typo.
+
+2014-06-30  Aldric Giacomoni  <trevoke@gmail.com>
+
+	Fix markdown in README
+
+2014-03-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el (async-smtpmail-before-send-hook): Add docstring.
+
+2014-03-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el (async-smtpmail-send-it): Inject the value of
+	auth-sources (#22)
+
+2014-03-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el (async-smtpmail-before-send-hook): New hook that run
+	on child emacs before sending.
+
+2014-03-10  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el: Revert previous change (catch).
+
+2014-03-09  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el: Try to catch 'done to not exit when
+	smtpmail-via-smtp is recalled (#22).
+
+2014-03-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el: Fix encoding problems (#27)
+
+2014-03-07  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el: Exclude some vars when injecting (#22).
+
+2014-03-03  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* smtpmail-async.el (async-smtpmail-send-it): Eval content of buffer
+	outside temp buffer.(attempt to fix issue in mu4e)
+
+2014-02-19  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el (helm-async-be-async): Move it as obsolete variable
+	alias to helm.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-test.el: Update copyrights.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-test.el: Remove now unnecessary tests.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el (dired-async-mode): Notify number of jobs running in
+	lighter.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* README.md: Update.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el (helm-async-be-async): alias for dired-async-be-async.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* dired-async.el: Finish converting all names to dired*.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Rename helm-async.el to dired-async.el
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Use cl-lib instead of cl.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Rename all with dired-async prefix instead of
+	helm-async.
+
+2014-01-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async-file.el: Removed.
+	* dired-async.el: Removed.
+
+2013-11-17  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Don't rely on async.el being in load-path.
+
+	This uses "symbol-file" instead of "find-library-name" to figure out 
+	where async.el is. This works even if async.el was loaded without adding 
+	its directory to the load-path.
+
+	Fixes #15.
+
+2013-11-06  John Wiegley  <johnw@newartisans.com>
+
+	Revert master back to 242ae73
+
+2013-11-06  John Wiegley  <johnw@newartisans.com>
+
+	Revert "* helm-async.el: Fix error handling."
+
+	This reverts commit 242ae734273162f4ec027618610a099c9a73557b.
+
+2013-11-05  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Complete the docstring for "async--get-function"
+
+2013-10-21  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Replace closure prevention with closure sanitation
+
+	"Sanitation" means that if a closure's list of lexical variables 
+	contains any variables with unprintable values, those variables are 
+	removed from the list. When async-debug is on, this also generates a 
+	message about the removed variables.
+
+	This solution is arguably more hackish, but should also work in every 
+	case where the "prevent all closures" solution worked as well as some 
+	more cases.
+
+2013-10-21  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Add test for handling different ways of passing a function
+
+2013-10-21  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Add lexbind test
+
+2013-10-20  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	More robust evaluation and closure-protection of start-func
+
+2013-10-20  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Add more comprehensive testing for anti-closure feature
+
+	Based on suggestions in 
+	https://github.com/jwiegley/emacs-async/pull/18#issuecomment-26665920
+
+2013-10-20  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Have test file add its own directory to load path
+
+	This makes it so that one can do "emacs -batch -l async-test.el ..." 
+	without having to also add "-l async.el -l async-file.el" at the command
+	line.
+
+2013-10-17  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Prevent accidental creation of lexical closures.
+
+	Fixes #17. (Try async-test-7)
+
+2013-10-17  Ryan C. Thompson  <rct@thompsonclan.org>
+
+	Add test for #17.
+
+2013-07-16  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Fix error handling.
+
+2013-06-24  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (dired-create-file): Revert changes in fb8f10b.
+
+2013-06-24  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Add comments about incompatibility with dired-async.el
+	and async-file.el.
+
+2013-06-24  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (dired-create-files): Handle `dired-recursive-copies'
+	when async too.
+
+2013-06-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (dired-create-files): No need to backquote callback.
+
+2013-06-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Untabify and reindent.
+
+2013-06-11  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Fix mode-line updating for emacs-24.3.50.
+	(helm-async-mode): Propertize lighter.
+	(helm-async-after-file-create): Delay execution of mode-line
+	notification.
+	(helm-async-message): add group.
+	(helm-async-mode-message): new face.
+
+2013-04-10  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Update copyrights.
+
+2013-02-20  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async.el: Issue #7 Apply sabof patch from github; Fix processing
+	non--latin chars.
+	(async--receive-sexp):do it.
+	(async--insert-sexp): do it.
+
+2013-02-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2013-02-18  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (helm-async-env-variables-regexp): Fix for copying from
+	android devices.
+
+2013-02-17  John Wiegley  <johnw@newartisans.com>
+
+	Merge pull request #6 from mstrlu/fix-def-use-native-commands
+
+	* dired-async.el: Add a defvar for `dired-async-use-native-commands'
+
+2013-02-16  myuhe  <yuhei.maeda@gmail.com>
+
+	add async-pkg.el
+
+2013-02-01  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (dired-create-file): Fix operation is executed even when
+	replying no for overwriting.
+
+2012-11-29  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (dired-create-files): Honor dired-overwrite-confirmed.
+
+2012-08-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	Merge branch 'master' of github.com:jwiegley/emacs-async
+
+2012-08-08  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (helm-async-mode): ding when finish.
+
+2012-07-22  Luminous Fennell  <mstrlu@gmx.net>
+
+	* dired-async.el: Add a defvar for `dired-async-use-native-commands'
+
+2012-07-21  Luminous Fennell  <mstrlu@gmx.net>
+
+	Fix missing optional arguments when calling `async-copy-file' in
+	`async-dired.el'.
+
+	E.g. in `async-dired-copy-file-recursive' the :callback argument was 
+	interpreted as optional argument.. this completely broke
+	`async-copy-file'.
+
+2012-07-16  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* async.el (async-start): Use the possible true name of emacs
+	executable.
+
+2012-07-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (helm-async-processes): use process-name.
+	(helm-async-kill-process): Kill last async process.
+
+2012-07-13  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Turn off mode-line notification only when last process
+	end.
+
+2012-07-11  John Wiegley  <johnw@newartisans.com>
+
+	Fix github issue 2
+
+2012-07-10  John Wiegley  <johnw@newartisans.com>
+
+	Async queue handling has to happen in dired-async
+
+2012-07-10  John Wiegley  <johnw@newartisans.com>
+
+	Move async.el testing code into its own module
+
+2012-07-10  John Wiegley  <johnw@newartisans.com>
+
+	Started work on a generalized async-file service
+
+2012-07-10  John Wiegley  <johnw@newartisans.com>
+
+	Minor touches
+
+2012-07-07  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: Update copyright
+
+2012-07-06  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (helm-async-be-async): New, allow turning off async.
+	(dired-create-file): Use it.
+
+2012-07-06  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el Return file errors in child Emacs.
+
+2012-07-06  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el (dired-create-file): Use quote.
+
+2012-07-06  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: let-bind dired-recursive-copies to 'always to avoid
+	hanging on child.
+
+2012-07-06  Thierry Volpiatto  <thierry.volpiatto@gmail.com>
+
+	* helm-async.el: New, redefine dired-create-file to work with helm and
+	dired. Allow copying a list of files (marked files) completely
+	asynchronously. Support for deleting files is removed for now as it is
+	not working.
+
+2012-06-22  John Wiegley  <johnw@newartisans.com>
+
+	Propagate non-zero exit codes as errors
+
+2012-06-22  John Wiegley  <johnw@newartisans.com>
+
+	Several minor fixes
+
+2012-06-21  John Wiegley  <johnw@newartisans.com>
+
+	Added async-sandbox
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	dired-async now shows progress using overlays
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Show ops in progress `dired-async-in-process-face'
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Show full backtraces if `async-debug' is non-nil
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	smtpmail-async: Report status to user when done
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Use pipes instead of variable passing
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Fix to dired-async for wdired-mode
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Don't use lexical-binding in dired-async.el
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Always base64 encode
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Fix for when async.el is byte-compiled
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Added message passing, but undocumented for now
+
+	I'm having some serious difficulties with communicating to the child 
+	Emacs over a pipe.
+
+2012-06-20  John Wiegley  <johnw@newartisans.com>
+
+	Some minor adjustments
+
+2012-06-19  John Wiegley  <johnw@newartisans.com>
+
+	Don't use pipes for communication just yet
+
+2012-06-19  John Wiegley  <johnw@newartisans.com>
+
+	Added `dired-async-use-native-commands'
+
+2012-06-19  John Wiegley  <johnw@newartisans.com>
+
+	Made some macros into functions, added debug code
+
+2012-06-19  John Wiegley  <johnw@newartisans.com>
+
+	Added `async-start-process'
+
+2012-06-19  John Wiegley  <johnw@newartisans.com>
+
+	Send data over a pipe, rather than in an argument
+
+2012-06-19  John Wiegley  <johnw@newartisans.com>
+
+	Corrected a problem with async deletions
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Fixed async-smtpmail-send-it
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Quiet byte-compiler warnings
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Updated README
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Added smtpmail-async.el
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Added async-inject-environment
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Added support for signal propagation
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Updated README
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Added dired-async
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Added note to README
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Renamed emacs-async.el to async.el
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Small change
+
+2012-06-18  John Wiegley  <johnw@newartisans.com>
+
+	Initial revision
+

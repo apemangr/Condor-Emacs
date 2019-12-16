@@ -18,6 +18,11 @@
 
 ***
 
+
+
+
+
+
 # Table of Contents
 
 -[Introduction](#introduction)
@@ -40,10 +45,5 @@
 - **Highlights**
 
 - **Formatting**
-
-
-
-
-
 
 - **Hovers**

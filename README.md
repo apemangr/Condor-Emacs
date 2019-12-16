@@ -39,6 +39,7 @@
         - [Windows](#windows)
 - [Installation](#installation)
 - [Programming language support](#programming-language-support)
+- [License](#license)
 
 # Features
 
@@ -174,4 +175,5 @@ Condor Emacs has this font family by default, if you want to have a version like
 | Lua         | Soon    | Soon       | Soon      | Yes                   |
 | Haskell     | Soon    | Soon       | Soon      | Yes                   |
 
-
+# License
+The license is GPLv3 for all parts specific to Condor Emacs.

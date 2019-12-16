@@ -1,3 +1,1 @@
-* Condor Emacs
-#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
-[[./CondorEmacs.png]]
+<h1 align="center">Condor Emacs</h1>

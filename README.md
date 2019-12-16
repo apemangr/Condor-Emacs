@@ -57,6 +57,8 @@
 
 <p align="center">
   <img src="images/CondorEmacsDash.png" alt="Condor Emacs" title="" />
+  <img src="images/CondorEmacsCode.png" alt="Coding" title="" />
+
 </p>
 
 

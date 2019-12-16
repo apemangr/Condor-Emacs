@@ -28,11 +28,11 @@
 
 # Table of Contents
 
--[Introduction](#introduction)
+- [Introduction](#introduction)
 
--[Features](#features)
+- [Features](#features)
 
--[Screenshots](#screenshots)
+- [Screenshots](#screenshots)
 
 - [Prerequisites](#prerequisites)
     - [Emacs](#emacs)

@@ -40,6 +40,8 @@
 - [Installation](#installation)
 - [Programming language support](#programming-language-support)
 - [Updates](#updates)
+    - [Condor Emacs Release](#condor-emacs-release)
+    - [Packages](#packages)
 - [License](#license)
 
 

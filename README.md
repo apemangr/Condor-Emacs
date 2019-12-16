@@ -4,5 +4,10 @@
 </p>
 
 <p align="justify">
-  <b>Condor Emacs</b> is an option to take the Emacs experience just out of the box, designed for the newbie and the expert. At this time this version is only focused to be a C and C++ languages IDE. But very soon will have support for more languages.
+  <b>Condor Emacs</b> is an option to take the Emacs experience just out of the box, designed for the newbie and the expert.
+ At this time, this version is only focused to be a C and C++ languages IDE. But very soon will have support for more languages.
+  For the moment this is just a beta, any help with this project is welcome.
 </p>
+
+
+![alt text](https://imgur.com/4JoiHYY "Logo Title Text 1")

@@ -86,7 +86,7 @@ $ sudo dnf install emacs
 ```sh
 $ sudo zypper install emacs
 ```
-Condor Emacs has been tested correctly in Arch Linux with KDE and Xfce desktop enviroments.
+***Note:*** Condor Emacs has been tested correctly in Arch Linux with KDE and Xfce desktop enviroments.
 
 ### macOS
 
@@ -108,7 +108,7 @@ $ sudo port install emacs-app
 
 The [Emacs for OSX](https://emacsformacosx.com/) website also provides universal binaries.
 
-**NOTE:** Condor Emacs has not been tested yet on macOS. (Help nedeed)
+***NOTE:*** Condor Emacs has not been tested yet on macOS. (Help needed)
 
 ### Windows
 
@@ -127,6 +127,9 @@ For the 32bits build, evaluate:
 ```sh
 $ pacman -S mingw-w64-i686-emacs
 ```
-[Source GNU Emacs site](https://www.gnu.org/software/emacs/download.html#windows)
+
+***NOTE:*** Condor Emacs has not been tested yet on Windows.
+
+[Source: GNU Emacs site](https://www.gnu.org/software/emacs/download.html#windows)
 
 

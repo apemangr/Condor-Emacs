@@ -39,7 +39,9 @@
         - [Windows](#windows)
 - [Installation](#installation)
 - [Programming language support](#programming-language-support)
+- [Updates](#updates)
 - [License](#license)
+
 
 # Features
 
@@ -174,6 +176,28 @@ Condor Emacs has this font family by default, if you want to have a version like
 | Ruby        | Soon    | Soon       | Soon      | Yes                   |
 | Lua         | Soon    | Soon       | Soon      | Yes                   |
 | Haskell     | Soon    | Soon       | Soon      | Yes                   |
+
+# Updates
+
+## Condor Emacs Release
+
+To update to the latest version write the following code in the master branch, including the last version release.
+```sh
+git fetch
+git reset --hard <tag version which you are updating to>
+```
+## Packages
+In the main buffer called *Dashboard* you can press the "Update Packages" to automatically updates all the packages.
+
+<p align="center">
+  <img src="images/DashboardUpdate.png" alt="Dashboard Update" title="" />
+</p>
+
+You can also type **M-x** and **auto-package-update-now.** 
+
+<p align="center">
+  <img src="images/UpdatePackages.png" alt="Update Packages" title="" />
+</p>
 
 # License
 The license is GPLv3 for all parts specific to Condor Emacs.

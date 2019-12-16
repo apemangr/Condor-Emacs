@@ -16,13 +16,6 @@
   <a href="https://github.com/apemangr/Condor-Emacs/wiki/"><b>Wiki</b></a> 
 </p>
 
-
-
-
-
-
-
-
 # Table of Contents
 
 -[Introduction](#introduction)
@@ -31,9 +24,17 @@
 
 -[Screenshots](#screenshots)
 
+- [Prerequisites](#prerequisites)
+    - [Emacs](#emacs)
+        - [Linux](#linux)
+        - [macOS](#macos)
+        - [Windows](#windows)
+
+
 # Features
 
 - **Real-time Diagnostics**
+- **Simple configuration**
 - **Code completion**
 - **Out of the box**
 - **Beatiful GUI**
@@ -49,5 +50,15 @@
   <img src="images/CondorEmacsCode.png" alt="Coding" title="" />
   <img src="images/CondorEmacsConfig.png" alt="Config" title="" />  
 </p>
+
+# Prerequisites
+
+## Emacs
+
+### Linux
+
+### macOS
+
+### Windows
 
 

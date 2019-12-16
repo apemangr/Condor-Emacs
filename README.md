@@ -29,6 +29,9 @@
 
 -[Features](#features)
 
+-[Screenshots](#screenshots)
+
+***
 
 # Features
 
@@ -47,3 +50,13 @@
 - **Formatting**
 
 - **Hovers**
+
+***
+
+# Screenshots
+
+<p align="center">
+  <img src="images/CondorEmacsDash.png" alt="Condor Emacs" title="" />
+</p>
+
+

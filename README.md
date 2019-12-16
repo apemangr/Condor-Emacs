@@ -142,4 +142,16 @@ That will create a backup folder in your home directory called EmacsBackup.
 
 **2. Clone de repository**
 
+```sh
+$ git clone https://github.com/apemangr/Condor-Emacs.git ~/.emacs.d
+```
+Make sure that the .emacs.d folder does not exist before cloning the repository.
+
+**3. Install the all-the-icons fonts**
+
+For the emacs symbols to work correctly you will have to open emacs and press **M-x** and then write **all-the-icons-install-fonts**
+<p align="center">
+  <img src="images/All-the-icons-install.png" alt="All-the-icons" title="" />
+</p>
+
 

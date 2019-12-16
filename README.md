@@ -54,8 +54,8 @@
 - **Out of the box**
 - **Beatiful GUI**
 - **Easy to use**
-- **Highlights**
 - **Formatting**
+- **Highlights**
 - **Hovers**
 
 # Screenshots

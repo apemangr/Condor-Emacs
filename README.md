@@ -48,7 +48,7 @@
 
 # Features
 
-- **Real-time Diagnostics**
+- **Real-time diagnostics**
 - **Simple configuration**
 - **Code completion**
 - **Out of the box**
@@ -92,7 +92,7 @@ $ sudo dnf install emacs
 ```sh
 $ sudo zypper install emacs
 ```
-***Note:*** Condor Emacs has been tested correctly in Arch Linux with KDE and Xfce desktop enviroments.
+**Note:** Condor Emacs has been tested correctly in Arch Linux with KDE and Xfce desktop enviroments.
 
 ### macOS
 
@@ -114,14 +114,15 @@ $ sudo port install emacs-app
 
 The [Emacs for OSX](https://emacsformacosx.com/) website also provides universal binaries.
 
-***NOTE:*** Condor Emacs has not been tested yet on macOS. (Help needed)
+**NOTE:** Condor Emacs has not been tested yet on macOS (Help needed).
 
 ### Windows
 
-GNU Emacs for Windows can be downloaded from a [nearby GNU mirror](http://espejito.fder.edu.uy/gnu/emacs/windows/); or the .[main GNU FTP server](http://ftp.gnu.org/gnu/emacs/windows/).
-Unzip the zip file preserving the directory structure, and run bin\runemacs.exe. Alternatively, create a desktop shortcut to bin\runemacs.exe, and start Emacs by double-clicking on that shortcut's icon.
+GNU Emacs for Windows can be downloaded from a [nearby GNU mirror](http://espejito.fder.edu.uy/gnu/emacs/windows/); or the [main GNU FTP server](http://ftp.gnu.org/gnu/emacs/windows/).
 
-The Windows binaries are signed by Phillip Lord 8493 0FFB 79B6 45F7 DEA2 9AD0 AC6D D3FF D1D0 46BD.
+Unzip the zip file preserving the directory structure, and run bin\runemacs.exe. Alternatively, create a desktop shortcut to **bin\runemacs.exe**, and start Emacs by double-clicking on that shortcut's icon.
+
+The Windows binaries are signed by Phillip Lord **8493 0FFB 79B6 45F7 DEA2 9AD0 AC6D D3FF D1D0 46BD**.
 
 MSYS2 users can install Emacs (64bits build) with the following:
 
@@ -134,9 +135,9 @@ For the 32bits build, evaluate:
 $ pacman -S mingw-w64-i686-emacs
 ```
 
-***NOTE:*** Condor Emacs has not been tested yet on Windows.
+**NOTE:** Condor Emacs has not been tested yet on Windows.
 
-[Source: GNU Emacs site](https://www.gnu.org/software/emacs/download.html#windows)
+Source: [GNU Emacs site](https://www.gnu.org/software/emacs/download.html#windows)
 
 # Installation
 **1. Make a backup of your Emacs config files**
@@ -147,7 +148,7 @@ $ mv .emacs EmacsBackup
 ```
 That will create a backup folder in your home directory called EmacsBackup.
 
-**2. Clone de repository**
+**2. Clone the repository**
 
 ```sh
 $ git clone https://github.com/apemangr/Condor-Emacs.git ~/.emacs.d
@@ -156,12 +157,13 @@ Make sure that the .emacs.d folder does not exist before cloning the repository.
 
 **3. Install the all-the-icons fonts**
 
-For the emacs symbols to work correctly you will have to open emacs and press **M-x** and then write **all-the-icons-install-fonts**
+For the emacs symbols to work correctly you will have to open emacs and press **M-x** and then write **all-the-icons-install-fonts**.
 <p align="center">
   <img src="images/All-the-icons-install.png" alt="All-the-icons" title="" />
 </p>
 
 **4. (Optional) Install SF Mono Fonts**
+
 Condor Emacs has this font family by default, if you want to have a version like the screenshots, it's recommended that you install them.
 
 # Programming language support
@@ -190,7 +192,7 @@ git fetch
 git reset --hard <tag version which you are updating to>
 ```
 ## Packages
-In the main buffer called *Dashboard* you can press the **"Update Packages"** to automatically updates all the packages.
+In the main buffer called **Dashboard** you can press the **"Update Packages"** button to automatically updates all the packages.
 
 <p align="center">
   <img src="images/DashboardUpdate.png" alt="Dashboard Update" title="" />
@@ -203,4 +205,5 @@ You can also type **M-x** and **auto-package-update-now.**
 </p>
 
 # License
+
 The license is GPLv3 for all parts specific to Condor Emacs.

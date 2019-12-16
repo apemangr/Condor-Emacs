@@ -20,8 +20,7 @@
   <img src="https://img.shields.io/github/license/apemangr/Condor-Emacs" alt="License" title="" />
   <img src="https://img.shields.io/github/issues/apemangr/Condor-Emacs" alt="Issues" title="" />  
   <img src="https://img.shields.io/github/stars/apemangr/Condor-Emacs" alt="Stars" title="" /> 
-  <img src="https://img.shields.io/github/downloads/apemangr/Condor-Emacs/v1.0-beta/total" alt="Downloads" title="" /> 
-  <img src="  https://img.shields.io/github/last-commit/apemangr/condor-emacs" alt="Last commit" title="" /> 
+  <img src="https://img.shields.io/github/downloads/apemangr/Condor-Emacs/v1.0-beta/total" alt="Downloads" title="" />
 </p>
 
 
@@ -38,7 +37,7 @@
         - [Linux](#linux)
         - [macOS](#macos)
         - [Windows](#windows)
-
+- [Installation](#installation)
 
 # Features
 
@@ -131,5 +130,16 @@ $ pacman -S mingw-w64-i686-emacs
 ***NOTE:*** Condor Emacs has not been tested yet on Windows.
 
 [Source: GNU Emacs site](https://www.gnu.org/software/emacs/download.html#windows)
+
+# Installation
+**1. Make a backup of your Emacs config files**
+```sh
+$ cd ~
+$ mv .emacs.d EmacsBackup
+$ mv .emacs EmacsBackup
+```
+That will create a backup folder in your home directory called EmacsBackup.
+
+**2. Clone de repository**
 
 

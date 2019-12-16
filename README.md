@@ -153,5 +153,6 @@ For the emacs symbols to work correctly you will have to open emacs and press **
 <p align="center">
   <img src="images/All-the-icons-install.png" alt="All-the-icons" title="" />
 </p>
+**4. (Optional) Install SF Mono Fonts**
 
-
+Condor Emacs has this font family by default, if you want to have a version like the screenshots, it's recommended that you install them.

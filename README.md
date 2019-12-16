@@ -171,13 +171,13 @@ Condor Emacs has this font family by default, if you want to have a version like
 | C++         | Yes     | Yes        | Yes       | Yes                   |
 | Objective-C | Yes     | Yes        | Yes       | Yes                   |
 | CUDA        | Yes     | Yes        | Yes       | Yes                   |
-| Java        | Soon    | Soon       | Soon      | Yes                   |
-| JavaScript  | Soon    | Soon       | Soon      | Yes                   |
-| Rust        | Soon    | Soon       | Soon      | Yes                   |
-| Python      | Soon    | Soon       | Soon      | Yes                   |
-| Ruby        | Soon    | Soon       | Soon      | Yes                   |
-| Lua         | Soon    | Soon       | Soon      | Yes                   |
-| Haskell     | Soon    | Soon       | Soon      | Yes                   |
+| Java        | Soon    | Soon       | Soon      | Soon                  |
+| JavaScript  | Soon    | Soon       | Soon      | Soon                  |
+| Rust        | Soon    | Soon       | Soon      | Soon                  |
+| Python      | Soon    | Soon       | Soon      | Soon                  |
+| Ruby        | Soon    | Soon       | Soon      | Soon                  |
+| Lua         | Soon    | Soon       | Soon      | Soon                  |
+| Haskell     | Soon    | Soon       | Soon      | Soon                  |
 
 # Updates
 

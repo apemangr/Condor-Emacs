@@ -10,4 +10,3 @@
 </p>
 
 
-![alt text](https://imgur.com/4JoiHYY "Logo Title Text 1")

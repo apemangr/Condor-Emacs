@@ -40,10 +40,10 @@
 
 <p align="center">
   
-  <img src="images/CondorEmacsDash.png" alt="Condor Emacs" title="" />
+  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/images/CondorEmacsDash.png" alt="Condor Emacs" title="" />
   
-  <img src="images/CondorEmacsCode.png" alt="Coding" title="" />
+  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/images/CondorEmacsCode.png" alt="Coding" title="" />
   
-  <img src="images/CondorEmacsConfig.png" alt="Config" title="" />  
+  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/images/CondorEmacsConfig.png" alt="Config" title="" />  
   
 </p>

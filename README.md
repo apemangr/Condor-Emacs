@@ -31,34 +31,23 @@
 
 -[Screenshots](#screenshots)
 
-
-
 # Features
 
 - **Real-time Diagnostics**
-
 - **Code completion**
-
 - **Out of the box**
-
 - **Beatiful GUI**
-
 - **Easy to use**
-
 - **Highlights**
-
 - **Formatting**
-
 - **Hovers**
-
-
 
 # Screenshots
 
 <p align="center">
   <img src="images/CondorEmacsDash.png" alt="Condor Emacs" title="" />
   <img src="images/CondorEmacsCode.png" alt="Coding" title="" />
-
+  <img src="images/CondorEmacsConfig.png" alt="Config" title="" />  
 </p>
 
 

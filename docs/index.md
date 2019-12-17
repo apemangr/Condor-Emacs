@@ -1,8 +1,8 @@
 
-<p align="center">
+<p>
   
   
-  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/Screenshot_20191216_210528" alt="Condor Emacs" title="Wena" />
+  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/Screenshot_20191216_210528.jpg" alt="Condor Emacs" title="Wena" />
 </p>
 
 # Introduction

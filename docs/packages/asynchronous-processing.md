@@ -5,7 +5,7 @@ parent: Packages
 nav_order: 1
 ---
 
-For doing asynchronous processing in Emacs, it's user the package **async**, this is the configuration present in the config file.
+For doing asynchronous processing in Emacs, it's used the package **async**, this is the configuration present in the config file.
 
 ```emacs-lisp
 (use-package async

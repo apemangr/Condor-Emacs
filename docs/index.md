@@ -1,4 +1,4 @@
-<img src="https://github.com/apemangr/Condor-Emacs/blob/master/images/CondorEmacsDash.png" alt="Branching">
+<img src="https://image.freepik.com/free-vector/broken-frosted-glass-realistic-icon_1284-12125.jpg" alt="Branching">
 
 
 # Introduction

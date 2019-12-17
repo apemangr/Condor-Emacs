@@ -1,4 +1,4 @@
-<img src="https://guides.github.com/activities/hello-world/branching.png" alt="Branching">
+<img src="https://github.com/apemangr/Condor-Emacs/blob/master/images/CondorEmacsDash.png" alt="Branching">
 
 
 # Introduction

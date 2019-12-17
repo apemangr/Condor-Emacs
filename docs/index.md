@@ -1,4 +1,7 @@
-![GitHub Logo](/images/CondorEmacsCode.png)
+<p align="center">
+  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/images/CondorEmacs.svg" title="" />
+</p>
+
 
 # Introduction
 

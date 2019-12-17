@@ -3,7 +3,7 @@ layout: default
 title: Home
 nav_order: 1
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
-permalink: /docs/
+permalink: /
 ---
 <p align="center">
 <img src="https://i.ibb.co/L110Zfg/Condor-Emacs.png" alt="Branching">

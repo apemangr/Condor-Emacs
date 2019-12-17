@@ -1,4 +1,8 @@
+![alt text](https://github.com/apemangr/Condor-Emacs/blob/master/CondorEmacs.png "Logo Title Text 1")
 <p align="center">
+  
+  ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+  
   <img src="https://github.com/apemangr/Condor-Emacs/blob/master/CondorEmacs.png" alt="Condor Emacs" title="" />
 </p>
 

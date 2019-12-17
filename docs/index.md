@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/images/CondorEmacs.svg" title="" />
-</p>
+<img src="https://i.ibb.co/L110Zfg/Condor-Emacs.png" alt="Branching">
 
+</p>
 
 # Introduction
 

@@ -1,0 +1,7 @@
+remote_theme: pmarsceill/just-the-docs
+color_scheme: "dark"
+
+
+layout: default
+title: Customization
+nav_order: 4

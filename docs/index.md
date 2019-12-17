@@ -1,9 +1,4 @@
-
-<p>
-  
-  
-  <img src="https://github.com/apemangr/Condor-Emacs/blob/master/Screenshot_20191216_210528.jpg" alt="Condor Emacs" title="Wena" />
-</p>
+![GitHub Logo](/images/CondorEmacsCode.png)
 
 # Introduction
 

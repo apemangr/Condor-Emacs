@@ -11,6 +11,6 @@ For doing asynchronous processing in Emacs, it's user the package **async**, thi
 (use-package async
   :ensure t
   :init (autoload 'dired-async-mode "dired-async.el" nil t)
-  (dired-async-mode 1))
+        (dired-async-mode 1))
 ```
 For more information about this package, please visit [async](https://github.com/jwiegley/emacs-async).

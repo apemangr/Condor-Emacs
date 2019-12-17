@@ -2,7 +2,7 @@
 layout: default
 title: async
 parent: Packages
-nav_order: 1
+nav_order: 2
 ---
 
 For doing asynchronous processing in Emacs, it's used the package **async**, this is the configuration present in the config file.

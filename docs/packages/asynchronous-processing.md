@@ -13,4 +13,4 @@ For doing asynchronous processing in Emacs, it's user the package **async**, thi
   :init (autoload 'dired-async-mode "dired-async.el" nil t)
   (dired-async-mode 1))
 ```
-For more information about this package, please visit [async](https://github.com/jwiegley/emacs-async){: .btn .btn-purple }
+For more information about this package, please visit [async](https://github.com/jwiegley/emacs-async).

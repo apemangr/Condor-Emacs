@@ -1,13 +1,8 @@
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "dark"
-
 {: .no_toc .text-delta }
+plugins:
+  - jekyll-seo-tag
 
 1. TOC
 {:toc}
----
-layout: default
-title: UI Components
-nav_order: 2
-has_children: true
----

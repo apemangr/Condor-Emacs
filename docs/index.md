@@ -23,3 +23,5 @@ permalink: /
   <img src="https://img.shields.io/github/stars/apemangr/Condor-Emacs" alt="Stars" title="" /> 
   <img src="https://img.shields.io/github/downloads/apemangr/Condor-Emacs/v1.0-beta/total" alt="Downloads" title="" />
 </p>
+
+[Releases](https://github.com/apemangr/Condor-Emacs/releases){: .btn .btn-purple :}

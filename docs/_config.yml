@@ -1,2 +1,14 @@
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "dark"
+
++-- ..
+|
+|-- UI Components
+|   |-- ..
+|   |
+|   |-- Buttons
+|   |   |-- Button Child Page
+|   |
+|   |-- ..
+|
++-- ..

@@ -1,6 +1,10 @@
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "dark"
 
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 ---
 layout: default
 title: UI Components

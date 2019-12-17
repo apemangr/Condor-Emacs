@@ -1,4 +1,6 @@
+<p align="center">
 <img src="https://i.ibb.co/L110Zfg/Condor-Emacs.png" alt="Branching">
+
 
 
 # Introduction

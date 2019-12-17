@@ -1,14 +1,9 @@
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "dark"
 
-+-- ..
-|
-|-- UI Components
-|   |-- ..
-|   |
-|   |-- Buttons
-|   |   |-- Button Child Page
-|   |
-|   |-- ..
-|
-+-- ..
+---
+layout: default
+title: UI Components
+nav_order: 2
+has_children: true
+---

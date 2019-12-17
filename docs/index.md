@@ -2,7 +2,6 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
 permalink: /
 ---
 <p align="center">
@@ -25,5 +24,5 @@ permalink: /
 </p>
 
 
-[Releases](https://github.com/apemangr/Condor-Emacs/releases){: .btn .btn-purple }
-[View on Github](https://github.com/apemangr/Condor-Emacs){: .btn .btn-blue }
+[Releases](https://github.com/apemangr/Condor-Emacs/releases){: .btn .btn-purple .px-6 }
+[View on Github](https://github.com/apemangr/Condor-Emacs){: .btn .btn-blue .px-9 }

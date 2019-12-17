@@ -25,5 +25,5 @@ permalink: /
 </p>
 
 
-[Releases](https://github.com/apemangr/Condor-Emacs/releases){: .btn .btn-purple }
+[Releases](https://github.com/apemangr/Condor-Emacs/releases){: .btn .btn-purple .vertical-align: middle }
 

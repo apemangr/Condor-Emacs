@@ -1,31 +1,25 @@
-(package-initialize)
-
-(custom-set-variables
- '(cua-mode t nil (cua-base))
- '(frame-resize-pixelwise t)
- '(inhibit-startup-screen t)
- '(menu-bar-mode nil)
- '(scroll-bar-mode nil)
- '(show-paren-mode t)
- '(tool-bar-mode nil)
- '(package-archives
-   (quote
-    (("gnu" . "https://elpa.gnu.org/packages/")
-     ("melpa" . "https://melpa.org/packages/"))))
- '(package-selected-packages (quote (use-package doom-modeline doom-themes))))
-(custom-set-faces
- '(default ((t (:family "SF Mono" :foundry "APPL" :slant normal :weight normal :height 110 :width normal)))))
-
-(use-package async
-  :ensure t
-  :init (autoload 'dired-async-mode "dired-async.el" nil t)
-  (dired-async-mode 1))
+(use-package all-the-icons
+  :ensure t)
 
 (use-package doom-themes
   :ensure t
   :init
   (load-theme 'doom-one t)
-  (doom-themes-treemacs-config))
+  (doom-themes-treemacs-config)
+  (setq neo-global--window nil)
+  (setq hl-line-sticky-flag nil)
+  (setq neo-vc-integration nil)
+  (setq neotree-dir-button-keymap nil)
+  (setq neotree-file-button-keymap nil)
+  (setq neo-path--file-short-name nil)
+  (setq neo-vc-for-node nil)
+  (setq neo-buffer--insert-fold-symbol nil)
+  (setq neo-buffer--node-list-set nil)
+  (setq neo-buffer--newline-and-begin nil)
+  (setq neo-global--select-window nil)
+  (setq neo-buffer--insert-file-entry nil)
+  (setq neo-buffer--insert-dir-entry nil)
+  (setq neo-buffer--insert-root-entry nil))
 
 (use-package doom-modeline
   :ensure t
@@ -50,9 +44,40 @@
   :config
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 2))
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+  (define-key company-active-map (kbd "<tab>") #'company-abort))
+(add-hook 'c++-mode-hook 'yas-minor-mode)
+(add-hook 'c-mode-hook 'yas-minor-mode)
+(with-eval-after-load 'company
+  (add-hook 'c++-mode-hook 'company-mode)
+  (add-hook 'c-mode-hook 'company-mode))
 (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode)
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
+(defun check-expansion ()
+    (save-excursion
+      (if (looking-at "\\_>") t
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "->") t nil)))))
+  (defun do-yas-expand ()
+    (let ((yas/fallback-behavior 'return-nil))
+      (yas/expand)))
+  (defun tab-indent-or-complete ()
+    (interactive)
+    (if (minibufferp)
+        (minibuffer-complete)
+      (if (or (not yas/minor-mode)
+              (null (do-yas-expand)))
+          (if (check-expansion)
+              (company-complete-common)
+            (indent-for-tab-command)))))
+(global-set-key [tab] 'tab-indent-or-complete)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (use-package company-lsp
@@ -62,7 +87,16 @@
 (use-package yasnippet
   :ensure t
   :config
-  (yas-reload-all))
+    (yas-reload-all))
+(define-key global-map (kbd "C-c C-y") 'yas-new-snippet)
+(defun yas/org-very-safe-expand ()
+(let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+(add-hook 'org-mode-hook
+(lambda ()
+(make-variable-buffer-local 'yas/trigger-key)
+(setq yas/trigger-key [tab])
+(add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+(define-key yas/keymap [tab] 'yas/next-field)))
 
 (use-package org-bullets
   :ensure t
@@ -166,24 +200,14 @@
 
 (add-hook 'prog-mode-hook 'linum-mode)
 
-(use-package all-the-icons
-  :ensure t)
-
 (use-package lsp-mode
   :commands lsp
-  :ensure t)
-
-(use-package lsp-ui
   :ensure t
-  :commands lsp-ui-mode)
+  :hook(c-mode . lsp))
 
 (use-package lsp-treemacs
   :ensure t
   :commands lsp-treemacs-errors-list)
-
-(use-package ccls
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp))))
 
 (use-package dashboard
   :ensure t
@@ -212,17 +236,15 @@
 	    "Click to config Condor Emacs"
 	    (lambda (&rest _) (find-file "~/.emacs.d/config.org")))))))
 
-(use-package centaur-tabs
-  :demand
-  :hook 
-  (treemacs-mode . centaur-tabs-local-mode)
-  (dashboard-mode . centaur-tabs-local-mode)
-  :config
-  (centaur-tabs-mode t)
-  (setq centaur-tabs-gray-out-icons 'buffer)
-  (setq centaur-tabs-set-bar 'left) 
-  (setq centaur-tabs-height 36)
-  (setq centaur-tabs-set-icons t)
-  :bind
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>" . centaur-tabs-forward))
+(setq scroll-step 1)
+(setq scroll-margin 1)
+(setq scroll-conservatively 101)
+(setq scroll-up-aggressively 0.01)
+(setq scroll-down-aggressively 0.01)
+(setq auto-window-vscroll nil)
+(setq fast-but-imprecise-scrolling nil)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+;; Horizontal Scroll
+(setq hscroll-step 1)
+(setq hscroll-margin 1)

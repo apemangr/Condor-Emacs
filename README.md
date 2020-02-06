@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/apemangr/Condor-Emacs/releases"><b>Downloads</b></a> |
   <a href="https://github.com/apemangr/Condor-Emacs/wiki/"><b>Wiki</b></a> |
-  <a href="https://apemangr.github.io/Condor-Emacs/"><b>Documentation</b></a>
+  <a href="https://apemangr.github.io/Condor-Emacs-Docs/"><b>Documentation</b></a>
 </p>
 
 <p align="center">

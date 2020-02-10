@@ -31,3 +31,5 @@
 
 (when (file-readable-p "~/.emacs.d/config.org")
   (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))

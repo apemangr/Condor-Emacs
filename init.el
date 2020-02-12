@@ -21,7 +21,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
+(package-initialize)
 (require 'package)
 (setq package-enable-at-startup nil)
 

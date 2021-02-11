@@ -11,7 +11,7 @@
    '(("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")))
  '(package-selected-packages
-   '(dashboard lsp-treemacs treemacs quickrun org-bullets yasnippet company-lsp company helm-lsp helm doom-modeline doom-themes use-package async))
+   '(dashboard quickrun yasnippet company helm use-package async))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil))
